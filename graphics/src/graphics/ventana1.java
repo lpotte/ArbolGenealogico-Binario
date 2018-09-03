@@ -15,13 +15,14 @@ import java.awt.Point;
 public class ventana1 extends javax.swing.JFrame {
 
     Graphics g;
-    Point p1, p2;
+    Point p1 = new Point (400,200), p2;
 
     /**
      * Creates new form ventana1
      */
     public ventana1() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,35 +36,57 @@ public class ventana1 extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel1.setText("ARBOL GENEALOGICO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addComponent(jButton1)
-                .addGap(127, 127, 127))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(56, 56, 56)))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +101,16 @@ public class ventana1 extends javax.swing.JFrame {
         }
         p1 = new Point(evt.getX(), evt.getY());
     }//GEN-LAST:event_formMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Nodo n = new Nodo(1, (int) p1.getX(), (int) p1.getY());
+        Graphics G = this.getGraphics();
+        n.pintar(G);
+        if (p1 != null) {
+            G.drawLine((int) p1.getX(), (int) p1.getY(), n.getX(), n.getY());
+        }
+        p1 = new Point(n.getX(), n.getY());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +149,7 @@ public class ventana1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
