@@ -10,5 +10,14 @@ package graphics;
  * @author lpotte
  */
 public class Arbol {
+    Nodo Raiz;
+
+    public Arbol() {}
     
+    public void insertar_nodo(Nodo g, int n, int x, int y){
+        if(Raiz == null){
+            Raiz = new Nodo(n,x,y);
+        }else{
+        }
+    }
 }
