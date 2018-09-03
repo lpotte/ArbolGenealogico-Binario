@@ -5,12 +5,14 @@
  */
 package graphics;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author lpotte
  */
 public class ventana1 extends javax.swing.JFrame {
-
+    Graphics g;
     /**
      * Creates new form ventana1
      */
@@ -28,6 +30,11 @@ public class ventana1 extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -42,6 +49,12 @@ public class ventana1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        Nodo n = new Nodo(1, evt.getX(), evt.getY());
+        Graphics G = this.getGraphics();
+        n.pintar(G);
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
