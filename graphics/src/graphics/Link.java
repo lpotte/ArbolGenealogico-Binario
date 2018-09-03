@@ -24,8 +24,8 @@ public class Link {
         this.y2 = y2;
     }
     
-    public void enlazar(Graphics G){
-        G.drawLine(x1, y1, x2, y2);
+    public void enlazar(Nodo G1, Nodo G2, Graphics G){
+        G.drawLine(G1.getX(), G1.getY(), G2.getX(), G2.getY());
     }
 
     public int getX1() {

@@ -6,6 +6,7 @@
 package graphics;
 
 import java.awt.Graphics;
+import java.awt.Point;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.awt.Graphics;
  */
 public class ventana1 extends javax.swing.JFrame {
     Graphics g;
+    Point p1, p2;
     /**
      * Creates new form ventana1
      */
