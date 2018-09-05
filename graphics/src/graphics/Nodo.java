@@ -27,9 +27,12 @@ public class Nodo {
         this.y = y;
     }
 
+    public Nodo() {
+    }
+    
+
     public void pintar(Graphics G) {
-        G.fillOval(this.x - r, this.y - r, d, d);
-        
+        G.fillOval(this.x - r, this.y - r, d, d);        
     }
 
     public Nodo getIzq() {
@@ -59,6 +62,19 @@ public class Nodo {
     public int getY() {
         return y;
     }
+
+    public void setInfo(int info) {
+        this.info = info;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    
     
     
 

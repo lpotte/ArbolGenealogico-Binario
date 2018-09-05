@@ -15,7 +15,9 @@ import java.awt.Point;
 public class ventana1 extends javax.swing.JFrame {
 
     Graphics g;
-    Point p1 = new Point (400,200), p2;
+    Point p1 = new Point(400, 200), p2;
+    Arbol ar = new Arbol();
+    Nodo actual;
 
     /**
      * Creates new form ventana1
@@ -39,7 +41,8 @@ public class ventana1 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
+        setForeground(java.awt.Color.black);
         setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,23 +96,28 @@ public class ventana1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        Nodo n = new Nodo(1, evt.getX(), evt.getY());
-        Graphics G = this.getGraphics();
-        n.pintar(G);
-        if (p1 != null) {
-            G.drawLine((int) p1.getX(), (int) p1.getY(), evt.getX(), evt.getY());
+        actual = ar.buscar(ar.Raiz, new Point(evt.getX(), evt.getY()));
+        if (actual != null){
+            p1 = new Point (evt.getX(), evt.getY());
+        }else{
+            p1 = null;
         }
-        p1 = new Point(evt.getX(), evt.getY());
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Nodo n = new Nodo(1, (int) p1.getX(), (int) p1.getY());
-        Graphics G = this.getGraphics();
-        n.pintar(G);
         if (p1 != null) {
-            G.drawLine((int) p1.getX(), (int) p1.getY(), n.getX(), n.getY());
+            Nodo n = new Nodo();
+            Graphics G = this.getGraphics();
+            ar.insertar_nodo(G, actual, n, 11, (int) p1.getX(), (int) p1.getY());
+            actual = n;
+            n.pintar(G);
+            if (p1 != null) {
+                G.drawLine((int) p1.getX(), (int) p1.getY(), n.getX(), n.getY());
+            }
+            p1 = new Point(n.getX(), n.getY());
+        }else{
+            System.out.println("Selección no válida");
         }
-        p1 = new Point(n.getX(), n.getY());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
