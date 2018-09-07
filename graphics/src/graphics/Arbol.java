@@ -24,11 +24,11 @@ public class Arbol {
             Raiz = new Nodo(info, x, y);
         } else {
             if (g.getDer() == null) {
-                g.setDer(new Nodo(info, x + 80, y + 100));
+                g.setDer(new Nodo(info, x+200, y + 10));
                 g.pintar(G);
             } else {
                 if (g.getIzq() != null) {
-                    g.setIzq(new Nodo(info, x - 80, y + 100));
+                    g.setIzq(new Nodo(info, x - 60, y + 100));
                     g.pintar(G);
                 } else {
                     System.out.println("No se pueden agregar más");
@@ -67,7 +67,7 @@ public class Arbol {
             if (nd.getX() + 30 > p.getX() && nd.getX() - 30 < p.getX() && nd.getY() - 30 < p.getY() && nd.getY() + 30 > p.getY()) {
                 return nd;
             } else {
-                if (nd.getDer() != null) {
+                if (buscar(nd.getDer(), p) != null) {
                     return buscar(nd.getDer(), p);
                 } else {
                     return buscar(nd.getIzq(), p);
@@ -76,4 +76,5 @@ public class Arbol {
         }
         return null;
     }
+
 }
