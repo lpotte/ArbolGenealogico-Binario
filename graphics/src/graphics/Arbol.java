@@ -53,6 +53,21 @@ public class Arbol {
         cant_nodos++;
     }
 
+    public boolean existe(Nodo nd, int elemento) {
+        if (nd != null) {
+            if (nd.info == elemento) {
+                return true;
+            } else {
+                if (existe(nd.getDer(), elemento)) {
+                    return existe(nd.getDer(), elemento);
+                } else {
+                    return existe(nd.getIzq(), elemento);
+                }
+            }
+        }
+        return false;
+    }
+
     public Nodo buscar(Nodo nd, Point p) {
         if (nd != null) {
             if (nd.getX() + 30 > p.getX() && nd.getX() - 30 < p.getX() && nd.getY() - 30 < p.getY() && nd.getY() + 30 > p.getY()) {
@@ -86,11 +101,11 @@ public class Arbol {
 
     public Nodo buscarPadre(Nodo Raiz, Nodo elemento) {
         if (Raiz.getDer() != null) {
-            if (Raiz.getDer()== elemento) {
+            if (Raiz.getDer() == elemento) {
                 return Raiz;
             } else {
                 if (Raiz.getIzq() != null) {
-                    if (Raiz.getIzq()== elemento) {
+                    if (Raiz.getIzq() == elemento) {
                         return Raiz;
                     } else {
                         if (buscarPadre(Raiz.getDer(), elemento) != null) {
@@ -104,12 +119,12 @@ public class Arbol {
         }
         return null;
     }
-    
-    public boolean son_hermanos(Nodo Raiz,Nodo x,Nodo y){
-        if(Raiz != null){
-            if (buscarPadre(Raiz,x) == buscarPadre(Raiz, y)){
+
+    public boolean son_hermanos(Nodo Raiz, Nodo x, Nodo y) {
+        if (Raiz != null) {
+            if (buscarPadre(Raiz, x) == buscarPadre(Raiz, y)) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }

@@ -38,9 +38,14 @@ public class Nodo {
     public void pintar(Graphics G) {
         G.setColor(Color.ORANGE);
         G.fillOval(this.x - r, this.y - r, d, d);
-        G.setColor(Color.WHITE);
+        G.setColor(Color.BLACK);
         G.setFont( new Font( "Tahoma", Font.CENTER_BASELINE, 14 ) );
-        G.drawString(String.valueOf(info),this.x, this.y);
+        int posString = this.x;
+        for (int i = 0; i < String.valueOf(info).length(); i++) {
+            posString-=4;
+        }
+        G.drawString(String.valueOf(info),posString, this.y+3);
+        //G.drawString(String.valueOf(info),this.x, this.y);
     }
 
     public Nodo getIzq() {
