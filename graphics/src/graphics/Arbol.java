@@ -32,16 +32,16 @@ public class Arbol {
         } else {
             if (g.getDer() == null) {
                 n.setInfo(info);
-                n.setX(x + redox1(g.getNivel()+1));
+                n.setX(x + redox1(g.getNivel() + 1));
                 n.setY(y + bono2);
-                n.setNivel(g.getNivel()+1);
+                n.setNivel(g.getNivel() + 1);
                 g.setDer(n);
             } else {
                 if (g.getIzq() == null) {
                     n.setInfo(info);
-                    n.setX(x - redox1(g.getNivel()+1));
+                    n.setX(x - redox1(g.getNivel() + 1));
                     n.setY(y + bono2);
-                    n.setNivel(g.getNivel()+1);
+                    n.setNivel(g.getNivel() + 1);
                     g.setIzq(n);
                 } else {
                     System.out.println("No se pueden agregar más");
@@ -69,19 +69,50 @@ public class Arbol {
     }
 
     private int redox1(int i) {
-        int aux=this.bono1;
+        int aux = this.bono1;
         for (int j = 0; j <= i; j++) {
-            aux=aux/2;
+            aux = aux / 2;
         }
         return aux;
     }
 
     private int redox2(int i) {
-        int aux=this.bono2;
+        int aux = this.bono2;
         for (int j = 0; j <= i; j++) {
-            aux=aux/2;
+            aux = aux / 2;
         }
         return aux;
     }
 
+    public Nodo buscarPadre(Nodo Raiz, Nodo elemento) {
+        if (Raiz.getDer() != null) {
+            if (Raiz.getDer()== elemento) {
+                return Raiz;
+            } else {
+                if (Raiz.getIzq() != null) {
+                    if (Raiz.getIzq()== elemento) {
+                        return Raiz;
+                    } else {
+                        if (buscarPadre(Raiz.getDer(), elemento) != null) {
+                            return buscarPadre(Raiz.getDer(), elemento);
+                        } else {
+                            return buscarPadre(Raiz.getIzq(), elemento);
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    public boolean son_hermanos(Nodo Raiz,Nodo x,Nodo y){
+        if(Raiz != null){
+            if (buscarPadre(Raiz,x) == buscarPadre(Raiz, y)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
 }
