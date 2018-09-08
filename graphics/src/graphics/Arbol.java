@@ -15,26 +15,11 @@ import java.awt.Point;
 public class Arbol {
 
     Nodo Raiz;
+    int bono1 = 1000;
+    int bono2 = 60;
+    int cant_nodos = 0;
 
     public Arbol() {
-    }
-
-    public void insertar_nodo(Graphics G, Nodo g, int info, int x, int y) {
-        if (Raiz == null) {
-            Raiz = new Nodo(info, x, y);
-        } else {
-            if (g.getDer() == null) {
-                g.setDer(new Nodo(info, x+200, y + 10));
-                g.pintar(G);
-            } else {
-                if (g.getIzq() != null) {
-                    g.setIzq(new Nodo(info, x - 60, y + 100));
-                    g.pintar(G);
-                } else {
-                    System.out.println("No se pueden agregar más");
-                }
-            }
-        }
     }
 
     public void insertar_nodo(Graphics G, Nodo g, Nodo n, int info, int x, int y) {
@@ -42,24 +27,30 @@ public class Arbol {
             n.setInfo(info);
             n.setX(x);
             n.setY(y);
+            n.setNivel(0);
             Raiz = n;
         } else {
             if (g.getDer() == null) {
                 n.setInfo(info);
-                n.setX(x + 80);
-                n.setY(y + 100);
+                n.setX(x + redox1(g.getNivel()+1));
+                n.setY(y + bono2);
+                n.setNivel(g.getNivel()+1);
                 g.setDer(n);
             } else {
                 if (g.getIzq() == null) {
                     n.setInfo(info);
-                    n.setX(x - 80);
-                    n.setY(y + 100);
+                    n.setX(x - redox1(g.getNivel()+1));
+                    n.setY(y + bono2);
+                    n.setNivel(g.getNivel()+1);
                     g.setIzq(n);
                 } else {
                     System.out.println("No se pueden agregar más");
                 }
             }
         }
+        //bono1+=10;
+        //bono2+=10;
+        cant_nodos++;
     }
 
     public Nodo buscar(Nodo nd, Point p) {
@@ -75,6 +66,22 @@ public class Arbol {
             }
         }
         return null;
+    }
+
+    private int redox1(int i) {
+        int aux=this.bono1;
+        for (int j = 0; j <= i; j++) {
+            aux=aux/2;
+        }
+        return aux;
+    }
+
+    private int redox2(int i) {
+        int aux=this.bono2;
+        for (int j = 0; j <= i; j++) {
+            aux=aux/2;
+        }
+        return aux;
     }
 
 }

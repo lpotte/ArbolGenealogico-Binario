@@ -5,6 +5,8 @@
  */
 package graphics;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 /**
@@ -20,11 +22,13 @@ public class Nodo {
     int y;
     int d = 50;
     int r = d / 2;
+    int nivel;
 
-    public Nodo(int info, int x, int y) {
+    public Nodo(int info, int x, int y, int nivel) {
         this.info = info;
         this.x = x;
         this.y = y;
+        this.nivel = nivel;
     }
 
     public Nodo() {
@@ -32,7 +36,11 @@ public class Nodo {
     
 
     public void pintar(Graphics G) {
-        G.fillOval(this.x - r, this.y - r, d, d);        
+        G.setColor(Color.ORANGE);
+        G.fillOval(this.x - r, this.y - r, d, d);
+        G.setColor(Color.WHITE);
+        G.setFont( new Font( "Tahoma", Font.CENTER_BASELINE, 14 ) );
+        G.drawString(String.valueOf(info),this.x, this.y);
     }
 
     public Nodo getIzq() {
@@ -74,8 +82,12 @@ public class Nodo {
     public void setY(int y) {
         this.y = y;
     }
-    
-    
-    
 
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
 }
