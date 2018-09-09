@@ -439,7 +439,7 @@ public class ventana1 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Selección no válida","Advertencia", 2);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Debe digitar un valor para agregar, recuerde que el orden ene que se guardan los elementos en el arbols es, primero el hijo derecho después el hijo izquierdo","Advertencia", 2);
+                JOptionPane.showMessageDialog(null, "Debe digitar un valor para agregar, recuerde que el orden en que se guardan los elementos en el arbols es, primero el hijo derecho después el hijo izquierdo","Advertencia", 2);
             }
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verifique el elemento a insertar, recuerde que sólo puede insertar números. Intente nuevamente insertando un valor válido","Advertencia", 2);
