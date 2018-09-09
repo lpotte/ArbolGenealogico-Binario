@@ -36,9 +36,9 @@ public class ventana1 extends javax.swing.JFrame {
                 + "      + primero el hijo derecho y después el izquierdo \n"
                 + "- Para agregar un hijo a un nodo, debe seleccionar el padre dentro del árbol \n"
                 + "- Para ver la relación entre nodos debe seleccionar los elementos desde el árbol \n"
-                + "- Este es un árbol binario, por lo tanto cada nodo puede tener dos hijos \n"
+                + "- Este es un árbol binario, por lo tanto cada nodo puede tener hasta dos hijos \n"
                 + "- Este árbol sólo acepta caracteres númericos \n"
-                + "- Todas la acciones se encuentran en el menú de opciones"
+                + "- Todas las acciones se encuentran en el menú de opciones"
                 + "\n Nota: Si en un momento por cualquiera que sea el motivo el arbol desaparece, "
                 + "\n    por favor ir al menú de opciones y seleccionar redibujar árbol ", "Instrucciones",3);
     }
@@ -439,10 +439,10 @@ public class ventana1 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Selección no válida","Advertencia", 2);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Debe digitar un valor para agregar, recuerde que el orden ene que se guardan los elementos en el arbols es, primero el hijo derecho despues el hijo izquierdo","Advertencia", 2);
+                JOptionPane.showMessageDialog(null, "Debe digitar un valor para agregar, recuerde que el orden ene que se guardan los elementos en el arbols es, primero el hijo derecho después el hijo izquierdo","Advertencia", 2);
             }
         } catch (java.lang.NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifique el elemento a inserta, recuerde que solo puede insertar nuemeros. Intente nuevamente insertando un valor válido","Advertencia", 2);
+            JOptionPane.showMessageDialog(null, "Verifique el elemento a insertar, recuerde que sólo puede insertar números. Intente nuevamente insertando un valor válido","Advertencia", 2);
         }
         ar.repintar(ar.Raiz, G);
     }//GEN-LAST:event_jButton1ActionPerformed
