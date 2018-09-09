@@ -8,6 +8,7 @@ package graphics;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.awt.Point;
 public class ventana1 extends javax.swing.JFrame {
 
     Graphics g;
-    Point p1 = new Point(500, 200), p2;
+    Point p1 = new Point(500, 205), p2;
     Arbol ar = new Arbol();
     Nodo actual;
     int opcion;
@@ -30,6 +31,16 @@ public class ventana1 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.jPanel4.setVisible(false);
         this.jPanel3.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Instrucciones: \n "
+                + "- Los hijos de cada nodo se agregan de la siguiente forma: \n "
+                + "      + primero el hijo derecho y después el izquierdo \n"
+                + "- Para agregar un hijo a un nodo, debe seleccionar el padre dentro del árbol \n"
+                + "- Para ver la relación entre nodos debe seleccionar los elementos desde el árbol \n"
+                + "- Este es un árbol binario, por lo tanto cada nodo puede tener dos hijos \n"
+                + "- Este árbol sólo acepta caracteres númericos \n"
+                + "- Todas la acciones se encuentran en el menú de opciones"
+                + "\n Nota: Si en un momento por cualquiera que sea el motivo el arbol desaparece, "
+                + "\n    por favor ir al menú de opciones y seleccionar redibujar árbol ", "Instrucciones",3);
     }
 
     /**
@@ -54,13 +65,13 @@ public class ventana1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         eleX = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         eleY = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,7 +141,7 @@ public class ventana1 extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Numero a insertar como hijo ");
+        jLabel6.setText("Número a insertar como hijo ");
 
         add.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         add.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -152,7 +163,7 @@ public class ventana1 extends javax.swing.JFrame {
                         .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,21 +185,22 @@ public class ventana1 extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(10, 76, 450, 80);
+        jPanel4.setBounds(10, 76, 420, 80);
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 102));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Conocer relación entre");
+        jLabel3.setText("X seleccionado");
 
         eleX.setEditable(false);
         eleX.setBackground(new java.awt.Color(255, 255, 255));
-        eleX.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        eleX.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        eleX.setForeground(new java.awt.Color(204, 0, 0));
         eleX.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton2.setText("Conocer");
+        jButton2.setText("CONOCER RELACIÓN ENETRE X & Y");
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,61 +208,67 @@ public class ventana1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("X:");
+        eleY.setEditable(false);
+        eleY.setBackground(new java.awt.Color(255, 255, 255));
+        eleY.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        eleY.setForeground(new java.awt.Color(204, 0, 0));
+        eleY.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Y:");
-
-        eleY.setEditable(false);
-        eleY.setBackground(new java.awt.Color(255, 255, 255));
-        eleY.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        eleY.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLabel5.setText("Y seleccionado");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(eleX, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(eleY, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(19, 19, 19))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(eleX, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(eleY, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(eleX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(eleY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(eleX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(eleY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(480, 80, 520, 40);
+        jPanel3.setBounds(430, 70, 560, 90);
 
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jMenu1.setText("Opciones");
+        jMenu1.setText("OPCIONES");
+        jMenu1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        jMenuItem1.setText("Insertar nuevo elemento");
+        jMenuItem1.setBackground(new java.awt.Color(0, 51, 102));
+        jMenuItem1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jMenuItem1.setText("Insertar Nuevo Elemento");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -258,7 +276,9 @@ public class ventana1 extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Conocer relación enetre nodos");
+        jMenuItem2.setBackground(new java.awt.Color(0, 51, 102));
+        jMenuItem2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jMenuItem2.setText("Conocer Relación Entre Nodos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -266,8 +286,21 @@ public class ventana1 extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem4.setBackground(new java.awt.Color(0, 51, 102));
+        jMenuItem4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jMenuItem4.setText("Redibujar Árbol");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem3.setText("Salir");
+        jMenuItem3.setBackground(new java.awt.Color(0, 51, 102));
+        jMenuItem3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jMenuItem3.setText("Cerrar Programa");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -283,7 +316,7 @@ public class ventana1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,26 +357,29 @@ public class ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void Conocer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Conocer
-        System.out.println("Entra a comparar");
-        if (ar.buscarPadre(ar.Raiz, x) == y) {
-            System.out.println("Y es el padre de x");
+        if (x == null || y == null) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar dos elemento del arbol","Advertencia", 2);
         } else {
-            if (ar.buscarPadre(ar.Raiz, y) == x) {
-                System.out.println("X es padre de Y");
+            if (ar.buscarPadre(ar.Raiz, x) == y) {
+                JOptionPane.showMessageDialog(null, "Y es el padre de X");
             } else {
-                if (ar.son_hermanos(ar.Raiz, x, y)) {
-                    System.out.println("X y Y Son heremanos");
+                if (ar.buscarPadre(ar.Raiz, y) == x) {
+                    JOptionPane.showMessageDialog(null, "X es padre de Y");
                 } else {
-                    if (ar.son_hermanos(ar.Raiz, ar.buscarPadre(ar.Raiz, x), ar.buscarPadre(ar.Raiz, y))) {
-                        System.out.println("X y Y son primos");
+                    if (ar.son_hermanos(ar.Raiz, x, y)) {
+                        JOptionPane.showMessageDialog(null, "X & Y Son hermanos");
                     } else {
-                        if (ar.son_hermanos(ar.Raiz, ar.buscarPadre(ar.Raiz, x), y)) {
-                            System.out.println("Y es tio de X");
+                        if (ar.son_hermanos(ar.Raiz, ar.buscarPadre(ar.Raiz, x), ar.buscarPadre(ar.Raiz, y))) {
+                            JOptionPane.showMessageDialog(null, "X & Y son primos");
                         } else {
-                            if (ar.son_hermanos(ar.Raiz, x, ar.buscarPadre(ar.Raiz, y))) {
-                                System.out.println("X es tio de Y");
+                            if (ar.son_hermanos(ar.Raiz, ar.buscarPadre(ar.Raiz, x), y)) {
+                                JOptionPane.showMessageDialog(null, "Y es tio de X");
                             } else {
-                                System.out.println("No tienen niguna relación");
+                                if (ar.son_hermanos(ar.Raiz, x, ar.buscarPadre(ar.Raiz, y))) {
+                                    JOptionPane.showMessageDialog(null, "X es tio de Y");
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No tienen niguna relación");
+                                }
                             }
                         }
                     }
@@ -354,6 +390,8 @@ public class ventana1 extends javax.swing.JFrame {
         y = null;
         eleX.setText("");
         eleY.setText("");
+        Graphics G = this.getGraphics();
+        ar.repintar(ar.Raiz, G);
     }//GEN-LAST:event_Conocer
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -373,34 +411,46 @@ public class ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (p1 != null) {
-            Nodo n = new Nodo();
-            Graphics G = this.getGraphics();
-            if (!ar.existe(ar.Raiz, Integer.parseInt(add.getText()))) {
-                if (actual == null) {
-                    ar.insertar_nodo(G, actual, n, Integer.parseInt(add.getText()), (int) p1.getX(), (int) p1.getY());
-                    n.pintar(G);
-                    actual = n;
-                    p1 = new Point(n.getX(), n.getY());
-                } else {
-                    if (actual.Der == null || actual.Izq == null) {
-                        ar.insertar_nodo(G, actual, n, Integer.parseInt(add.getText()), (int) p1.getX(), (int) p1.getY());
-                        n.pintar(G);
-                        G.setColor(Color.ORANGE);
-                        G.drawLine((int) actual.getX(), (int) actual.getY(), n.getX(), n.getY());
-                        actual = n;
-                        p1 = new Point(n.getX(), n.getY());
+        Nodo n = new Nodo();
+        Graphics G = this.getGraphics();
+        try {
+            if (add.getText() != null) {
+                if (p1 != null) {
+                    if (!ar.existe(ar.Raiz, Integer.parseInt(add.getText()))) {
+                        if (actual == null) {
+                            ar.insertar_nodo(G, actual, n, Integer.parseInt(add.getText()), (int) p1.getX(), (int) p1.getY());
+                            actual = n;
+                            padre.setText(Integer.toString(n.info));
+                            p1 = new Point(n.getX(), n.getY());
+                        } else {
+                            if (actual.Der == null || actual.Izq == null) {
+                                ar.insertar_nodo(G, actual, n, Integer.parseInt(add.getText()), (int) p1.getX(), (int) p1.getY());
+                                actual = n;
+                                padre.setText(Integer.toString(n.info));
+                                p1 = new Point(n.getX(), n.getY());
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No se pueden agregar más nodos", "Advertencia", 2);
+                            }
+                        }
                     } else {
-                        System.out.println("No se pueden agregar más nodos");
+                        JOptionPane.showMessageDialog(null, "Ya este elemento existe","Advertencia", 2);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selección no válida","Advertencia", 2);
                 }
             } else {
-                System.out.println("Ya este elemento existe!!");
+                JOptionPane.showMessageDialog(null, "Debe digitar un valor para agregar, recuerde que el orden ene que se guardan los elementos en el arbols es, primero el hijo derecho despues el hijo izquierdo","Advertencia", 2);
             }
-        } else {
-            System.out.println("Selección no válida");
+        } catch (java.lang.NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verifique el elemento a inserta, recuerde que solo puede insertar nuemeros. Intente nuevamente insertando un valor válido","Advertencia", 2);
         }
+        ar.repintar(ar.Raiz, G);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Graphics G = this.getGraphics();
+        ar.repintar(ar.Raiz, G);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,7 +496,6 @@ public class ventana1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
@@ -454,6 +503,7 @@ public class ventana1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

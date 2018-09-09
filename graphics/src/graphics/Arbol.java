@@ -5,6 +5,8 @@
  */
 package graphics;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 
@@ -99,19 +101,22 @@ public class Arbol {
         return aux;
     }
 
-    public Nodo buscarPadre(Nodo Raiz, Nodo elemento) {
-        if (Raiz.getDer() != null) {
-            if (Raiz.getDer() == elemento) {
-                return Raiz;
-            } else {
-                if (Raiz.getIzq() != null) {
-                    if (Raiz.getIzq() == elemento) {
-                        return Raiz;
+    public Nodo buscarPadre(Nodo nd, Nodo elemento) {
+        if (nd != null) {
+            if (nd.getDer() != null || nd.getIzq() != null) {
+                if (nd.getDer() == elemento) {
+                    return nd;
+                } else {
+//                if (Raiz.getIzq() != null) {
+                    if (nd.getIzq() == elemento) {
+                        return nd;
                     } else {
-                        if (buscarPadre(Raiz.getDer(), elemento) != null) {
-                            return buscarPadre(Raiz.getDer(), elemento);
+                        if (buscarPadre(nd.getDer(), elemento) != null) {
+                            return buscarPadre(nd.getDer(), elemento);
                         } else {
-                            return buscarPadre(Raiz.getIzq(), elemento);
+                            if (buscarPadre(nd.getIzq(), elemento) != null) {
+                                return buscarPadre(nd.getIzq(), elemento);
+                            }
                         }
                     }
                 }
@@ -129,5 +134,29 @@ public class Arbol {
             }
         }
         return false;
+    }
+
+    public void repintar(Nodo nd, Graphics G) {
+        if (nd != null) {
+            G.setColor(Color.ORANGE);
+            G.fillOval(nd.x - nd.r, nd.y - nd.r, nd.d, nd.d);
+            G.setColor(Color.BLACK);
+            G.setFont(new Font("Tahoma", Font.CENTER_BASELINE, 14));
+            int posString = nd.x;
+            for (int i = 0; i < String.valueOf(nd.info).length(); i++) {
+                posString -= 4;
+            }
+            G.drawString(String.valueOf(nd.info), posString, nd.y + 3);
+            if (nd.getDer() != null) {
+                G.setColor(Color.ORANGE);
+                G.drawLine(nd.getX(), nd.getY(), nd.getDer().getX(), nd.getDer().getY());
+            }
+            if (nd.getIzq() != null) {
+                G.setColor(Color.ORANGE);
+                G.drawLine(nd.getX(), nd.getY(), nd.getIzq().getX(), nd.getIzq().getY());
+            }
+            repintar(nd.getIzq(), G);
+            repintar(nd.getDer(), G);
+        }
     }
 }
