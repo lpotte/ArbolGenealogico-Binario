@@ -38,7 +38,7 @@ public class ventana1 extends javax.swing.JFrame {
                 + "- Para ver la relación entre nodos debe seleccionar los elementos desde el árbol \n"
                 + "- Este es un árbol binario, por lo tanto cada nodo puede tener hasta dos hijos \n"
                 + "- Este árbol sólo acepta caracteres númericos \n"
-                + "- "
+                + "- Todas las acciones se encuentran en el menú de opciones"
                 + "\n Nota: Si en un momento por cualquiera que sea el motivo el arbol desaparece, "
                 + "\n    por favor ir al menú de opciones y seleccionar redibujar árbol ", "Instrucciones",3);
     }
